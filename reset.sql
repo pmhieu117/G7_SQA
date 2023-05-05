@@ -1,0 +1,1 @@
+UPDATE `bhyt`.`users` SET `cccd_sau` = NULL, `cccd_truoc` = NULL, `dia_chi` = NULL, `email` = NULL, `img_chan_dung` = NULL, `password` = NULL, `quan_huyen` = NULL, `so_dien_thoai` = NULL, `tinh_thanh_pho` = NULL WHERE (`id` = '5');
