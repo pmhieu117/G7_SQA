@@ -37,34 +37,26 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli'>
 
-    <!-- =======================================================
-  * Template Name: Medilab
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
-<body>
+<body class="hide">
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
-
             <h1 class="logo me-auto"><a href="index.html">Nhóm 7</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="index.html">Trang củ</a></li>
-                    <li id="da_dang_nhap" class="dropdown "><a><span id="ten_dang_nhap" style="font-weight: bolder;">123456789
+                    <li><a class="nav-link scrollto active" href="/index.html">Trang chủ</a></li>
+                    <li id="da_dang_nhap" class="dropdown "><a><span id="ten_dang_nhap"
+                                style="font-weight: bolder;">123456789
                                 - Phạm Minh Hiếu</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="/thong-tin-tai-khoan.html">Thông tin tài khoản</a></li>
-                            <li><a href="/doi-mat-khau.html">Thay đổi mật khẩu</a></li>
-                            <li><a>Đăng xuất</a></li>
+                            <li><a href="/thong-tin-tai-khoan.html"
+                                    style="text-decoration: none; font-weight: normal;">Thông tin tài khoản</a></li>
+                            <li><a href="/doi-mat-khau.html" style="text-decoration: none;font-weight: normal;">Thay đổi mật
+                                    khẩu</a></li>
+                            <li><a style="text-decoration: none;font-weight: normal;" id="dang_xuat">Đăng xuất</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -97,14 +89,14 @@
                         <div class="col-6 mx-auto">
                             <div class="row">
                                 <div class="col-5">
-                                    <label class="label-input" style="margin-top: 15px;">Mật khẩu hiện tại: <i style="color: red;">*</i></label>
-                                    <label class="label-input" style="margin-top: 55px;">Mật khẩu mới: <i style="color: red;">*</i></label>
-                                    <label class="label-input" style="margin-top: 55px;">Xác thực mật khẩu: <i style="color: red;">*</i></label>
+                                    <label for="mat_khau_cu" class="label-input" style="margin-top: 15px;">Mật khẩu hiện tại: <i style="color: red;">*</i></label>
+                                    <label for="mat_khau_moi" class="label-input" style="margin-top: 55px;">Mật khẩu mới: <i style="color: red;">*</i></label>
+                                    <label for="xac_thuc" class="label-input" style="margin-top: 55px;">Xác thực mật khẩu: <i style="color: red;">*</i></label>
                                 </div>
                                 <div class="col-7">
-                                    <input type="text" style="margin-top: 10px;" class="input-reg" name="matKhauCu" required>
-                                    <input type="text" style="margin-top: 50px;" class="input-reg" name="matKhauMoi" required>
-                                    <input type="text" style="margin-top: 50px;" class="input-reg" name="xacThucMatKhau" required>
+                                    <input id="mat_khau_cu" type="text" style="margin-top: 10px;" class="input-reg" name="matKhauCu" required>
+                                    <input id="mat_khau_moi" type="text" style="margin-top: 50px;" class="input-reg" name="matKhauMoi" required>
+                                    <input id="xac_thuc" type="text" style="margin-top: 50px;" class="input-reg" name="xacThuc" required>
                                 </div>
                             </div>
                             <div class="row justify-content-end">
@@ -173,7 +165,50 @@
 
     <!-- CALL API -->
     <script>
-        var dangKyAPI = "http://localhost:8080/api/doiMatKhau"
+        const token_check = localStorage.getItem('accessToken');
+        const check = document.querySelector("body");
+        if (token_check) {
+            fetch('http://localhost:8080/api/check/trang-chu', {
+                method: "GET",
+                headers: {
+                    'Authorization': 'Bearer ' + token_check
+                }
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        location.href = "dang-nhap.html"
+                    }
+                })
+                .then(data => {
+                    if (data.status == "success") {
+                        if (check.classList.contains("hide")) {
+                            check.classList.remove("hide");
+                        }
+                        let tenDangNhap = document.querySelector("#ten_dang_nhap");
+                        let p = data.username + " - " + data.hoTen;
+                        tenDangNhap.innerHTML = p;
+                    } else {
+                        location.href = "dang-nhap.html"
+                    }
+                })
+                .catch(error => {
+                    location.href = "dang-nhap.html"
+                });
+        } else {
+            location.href = "dang-nhap.html"
+        }
+
+        document.getElementById("dang_xuat").addEventListener("click", function (event) {
+                event.preventDefault();
+                localStorage.removeItem('accessToken');
+                location.reload();
+            });
+    </script>
+
+    <script>
+        var dangKyAPI = "http://localhost:8080/api/doi-mat-khau/update"
         const sampleForm = document.getElementById("form-id");
         sampleForm.addEventListener("submit", event => {
             event.preventDefault();
@@ -190,10 +225,11 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    if (data.status == 'fail') {
-                        alert(data.message)
-                    } else {
-                        alert("Mật khẩu mới đã được cập nhật !")
+                    if(data.status=="success"){
+                        alert(data.message);
+                        location.href="/index.html";
+                    }else{
+                        alert(data.message);
                     }
                 })
                 .catch((error) => {

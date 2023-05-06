@@ -44,9 +44,6 @@
     <div class="container d-flex align-items-center">
 
       <h1 class="logo me-auto"><a href="index.html">Nhóm 7</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Trang chủ</a></li>
@@ -417,9 +414,6 @@
     document.getElementById("dang_xuat").addEventListener("click", function (event) {
       event.preventDefault();
       localStorage.removeItem('accessToken');
-      //localStorage.removeItem('username');
-      //localStorage.removeItem('hoTen');
-      //localStorage.removeItem('roles');
       location.reload();
     });
 

@@ -1,5 +1,6 @@
 package com.hieupm.code_bhyt.repository;
 
+import com.hieupm.code_bhyt.models.HoGiaDinh;
 import com.hieupm.code_bhyt.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -27,4 +28,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
   @Query("SELECT u FROM User u WHERE u.hoGiaDinh.code = :maHGD")
   List<User> findByMaHoGiaDinh(@Param("maHGD") String maHGD);
+
+  List<User> findUserByTinhThanhPhoAndHoTenAndNgaySinh(String tinhThanhPho, String hoTen, String ngaySinh);
+
+  List<User> findUserByHoGiaDinh(HoGiaDinh hoGiaDinh);
 }

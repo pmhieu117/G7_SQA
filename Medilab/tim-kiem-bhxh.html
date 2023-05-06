@@ -37,13 +37,13 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli'>
 
-    <!-- =======================================================
-  * Template Name: Medilab
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,26 +51,15 @@
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
-
             <h1 class="logo me-auto"><a href="index.html">Nhóm 7</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="index.html">Trang củ</a></li>
-                    <li id="da_dang_nhap" class="dropdown "><a href="#"><span id="ten_dang_nhap"
-                                style="font-weight: bolder;">123456789
-                                - Phạm Minh Hiếu</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="/thong-tin-tai-khoan.html">Thông tin tài khoản</a></li>
-                            <li><a href="/doi-mat-khau.html">Thay đổi mật khẩu</a></li>
-                            <li><a>Đăng xuất</a></li>
-                        </ul>
-                    </li>
+                    <li><a class="nav-link scrollto active" href="/index.html">Trang chủ</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
+            <a id="bt_dang_nhap" href="/dang-nhap.html" class="appointment-btn scrollto" style="text-decoration: none;font-weight: normal;">Đăng nhập</a>
+            <a id="bt_dang_ky" href="/inner-page.html" class="appointment-btn scrollto" style="text-decoration: none;font-weight: normal;">Đăng ký</a>
         </div>
     </header><!-- End Header -->
 
@@ -92,10 +81,10 @@
         </section><!-- End Breadcrumbs Section -->
 
         <section class="inner-page">
-            <div class="container">
-                <form id="form-id" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-6 mx-auto">
+            <div class="container"> 
+                <div class="row">
+                    <div class="col-6 mx-auto">
+                        <form id="form-id" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-5">
                                     <label class="label-input" style="margin-top: 15px;">Chọn tỉnh / thành phố: <i
@@ -106,11 +95,11 @@
                                             style="color: red;">*</i></label>
                                 </div>
                                 <div class="col-7">
-                                    <input type="text" style="margin-top: 10px;" class="input-reg" name="matKhauCu"
+                                    <input type="text" style="margin-top: 10px;" class="input-reg" name="tinhThanhPho"
                                         required>
-                                    <input type="text" style="margin-top: 50px;" class="input-reg" name="matKhauMoi"
+                                    <input type="text" style="margin-top: 50px;" class="input-reg" name="hoTen"
                                         required>
-                                    <input type="text" style="margin-top: 50px;" class="input-reg" name="xacThucMatKhau"
+                                    <input type="text" style="margin-top: 50px;" class="input-reg" name="ngaySinh"
                                         required>
                                 </div>
                             </div>
@@ -120,9 +109,46 @@
                                         style="margin-top: 55px;">Tìm kiếm</button>
                                 </div>
                             </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container-xl">
+                        <div class="table-responsive">
+                            <div class="table-wrapper hide" id="danh_sach">
+                                <div class="table-title">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4>DANH SÁCH THÀNH VIÊN HỘ GIA ĐÌNH</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="table table-striped table-hover" style="border-color: blue;">
+                                    <thead style="text-align: center; background-color: #80c6e4;">
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Mã số BHXH</th>
+                                            <th>Mã định danh</th>
+                                            <th>Họ và tên</th>
+                                            <th>Ngày sinh</th>
+                                            <th>Tỉnh thành phố</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ds-thanh-vien" style="text-align: center;">
+                                        <!-- <tr>
+                                            <td>STT</td>
+                                            <td>Mã số BHXH</td>
+                                            <td>Mã định danh</td>
+                                            <td>Họ và tên</td>
+                                            <td>Ngày sinh</td>
+                                            <td>Tỉnh thành phố</td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </section>
 
@@ -181,7 +207,7 @@
 
     <!-- CALL API -->
     <script>
-        var dangKyAPI = "http://localhost:8080/api/doiMatKhau"
+        var dangKyAPI = "http://localhost:8080/api/test/tim-kiem-bhxh"
         const sampleForm = document.getElementById("form-id");
         sampleForm.addEventListener("submit", event => {
             event.preventDefault();
@@ -191,17 +217,35 @@
             fetch(dangKyAPI, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'Application/json',
-                    'Authorization': 'Bearer ' + token
+                    'Content-Type': 'Application/json'
                 },
                 body: JSON.stringify(data)
             })
                 .then(response => response.json())
-                .then(data => {
-                    if (data.status == 'fail') {
-                        alert(data.message)
+                .then(resp => {
+                    if (resp.status == 'success') {
+                        let danh_sach = document.querySelector("#danh_sach");
+                        let ds_thanh_vien = document.querySelector("#ds-thanh-vien");
+                        let html_body = '';
+                        let thanh_vien = resp.data;
+                        for(let i=0;i<thanh_vien.length;i++){
+                            html_body+=`
+                                <tr>
+                                    <td>${i+1}</td>
+                                    <td>${thanh_vien[i].bhxh}</td>
+                                    <td>${thanh_vien[i].cccd}</td>
+                                    <td>${thanh_vien[i].hoTen}</td>
+                                    <td>${thanh_vien[i].ngaySinh}</td>
+                                    <td>${thanh_vien[i].tinhThanhPho}</td>
+                                </tr>
+                            `
+                        }
+                        ds_thanh_vien.innerHTML = html_body;
+                        if(danh_sach.classList.contains("hide")){
+                            danh_sach.classList.remove("hide");
+                        }
                     } else {
-                        alert("Mật khẩu mới đã được cập nhật !")
+                        alert("Lỗi hệ thống !")
                     }
                 })
                 .catch((error) => {

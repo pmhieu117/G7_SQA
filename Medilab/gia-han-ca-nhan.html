@@ -36,36 +36,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli'>
-
-    <!-- =======================================================
-  * Template Name: Medilab
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
-<body>
-
+<body class="hide">
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
-
             <h1 class="logo me-auto"><a href="index.html">Nhóm 7</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="index.html">Trang củ</a></li>
-                    <li id="da_dang_nhap" class="dropdown "><a href="#"><span id="ten_dang_nhap"
+                    <li><a class="nav-link scrollto active" href="/index.html">Trang chủ</a></li>
+                    <li id="da_dang_nhap" class="dropdown "><a><span id="ten_dang_nhap"
                                 style="font-weight: bolder;">123456789
                                 - Phạm Minh Hiếu</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="/thong-tin-tai-khoan.html">Thông tin tài khoản</a></li>
-                            <li><a href="/gia-han-ca-nhan.html">Gia hạn BHYT</a></li>
-                            <li><a>Đăng xuất</a></li>
+                            <li><a href="/thong-tin-tai-khoan.html"
+                                    style="text-decoration: none; font-weight: normal;">Thông tin tài khoản</a></li>
+                            <li><a href="/doi-mat-khau.html" style="text-decoration: none;font-weight: normal;">Thay đổi mật
+                                    khẩu</a></li>
+                            <li><a style="text-decoration: none;font-weight: normal;" id="dang_xuat">Đăng xuất</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -73,7 +62,6 @@
             </nav><!-- .navbar -->
         </div>
     </header><!-- End Header -->
-
     <main id="main">
 
         <!-- ======= Breadcrumbs Section ======= -->
@@ -94,30 +82,60 @@
         <section class="inner-page">
             <div class="container">
                 <div class="row">
-                    <form id="form-id" enctype="multipart/form-data">
-                        <div class="col-6 mx-auto">
-                            <div class="row">
-                                <div class="col-5">
-                                    <label class="label-input" style="margin-top: 15px;">Mã bảo hiểm y tế: <i
-                                            style="color: red;">*</i></label>
-                                    <label class="label-input" style="margin-top: 55px;">Số tháng gia hạn: <i
-                                            style="color: red;">*</i></label>
-                                </div>
-                                <div class="col-7">
-                                    <input type="text" style="margin-top: 10px;" class="input-reg" name="bhyt"
-                                        required>
-                                    <input type="number" style="margin-top: 50px;" class="input-reg" name="giaHan"
-                                        required>
+                    <div class="col-6 mx-auto">
+                        <form id="form_yeu_cau" enctype="multipart/form-data">
+                            <div class="" id="yeu_cau">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="bhyt" class="label-input" style="margin-top: 15px;">Mã bảo hiểm y tế: <i
+                                                style="color: red;">*</i></label>
+                                        <label for="giaHan" class="label-input" style="margin-top: 55px;">Số tháng gia hạn: <i
+                                                style="color: red;">*</i></label>
+                                    </div>
+                                    <div class="col-7">
+                                        <input id="bhyt" type="text" style="margin-top: 10px;" class="input-reg" name="bhyt"
+                                            required>
+                                        <select class="form-control" name="giaHan" style="margin-top: 70px;">
+                                            <option value="0">Không gia hạn</option>
+                                            <option value="3">3 tháng</option>
+                                            <option value="6">6 tháng</option>
+                                            <option value="12">12 tháng</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row justify-content-end">
-                                <div class="col-3">
+                                <div class="col-3" id="bt_yeu_cau">
                                     <button class="btn btn-primary btn-block" type="submit"
                                         style="margin-top: 55px;">Xác nhận</button>
                                 </div>
                             </div>
+                        </form>
+                        <div id="ket_qua" class="hide">
+                            <div class="row">    
+                                <div class="col-5">
+                                    <label class="label-input" style="margin-top: 15px;">Mã bảo hiểm y tế: <i style="color: red;">*</i></label>
+                                    <label class="label-input" style="margin-top: 55px;">Tên người thụ hưởng: <i style="color: red;">*</i></label>
+                                    <label class="label-input" style="margin-top: 55px;">Gia hạn từ ngày: <i style="color: red;">*</i></label>
+                                    <label class="label-input" style="margin-top: 55px;">Gia hạn đến ngày: <i style="color: red;">*</i></label>
+                                    <label class="label-input" style="margin-top: 55px;">Số tiền phải thanh toán: <i style="color: red;">*</i></label>
+                                </div>
+                                <div class="col-7">
+                                    <input type="text" style="margin-top: 10px;" class="input-reg" name="bhyt_resp" required>
+                                    <input type="text" style="margin-top: 50px;" class="input-reg" name="hoTen" required>
+                                    <input type="text" style="margin-top: 50px;" class="input-reg" name="tuNgay" required>
+                                    <input type="text" style="margin-top: 50px;" class="input-reg" name="denNgay" required>
+                                    <input type="text" style="margin-top: 50px;" class="input-reg" name="thanhTien" required>
+                                </div>
+                            </div>
                         </div>
-                    </form>
+                        <div class="row justify-content-end hide">
+                            <div id="bt_ket_qua" class="col-3 hide">
+                                <button class="btn btn-primary btn-block" type="submit" style="margin-top: 55px;">Thanh toán</button>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>   
             </div>
         </section>
@@ -177,6 +195,99 @@
 
     <!-- CALL API -->
     <script>
+        const token = localStorage.getItem('accessToken');
+        const check = document.querySelector("body");
+        if (token) {
+            fetch('http://localhost:8080/api/check/trang-chu', {
+                method: "GET",
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        location.href = "dang-nhap.html"
+                    }
+                })
+                .then(data => {
+                    if (data.status == "success") {
+                        if (check.classList.contains("hide")) {
+                            check.classList.remove("hide");
+                        }
+                        let tenDangNhap = document.querySelector("#ten_dang_nhap");
+                        let p = data.username + " - " + data.hoTen;
+                        tenDangNhap.innerHTML = p;
+                    } else {
+                        location.href = "dang-nhap.html"
+                    }
+                })
+                .catch(error => {
+                    location.href = "dang-nhap.html"
+                });
+        } else {
+            location.href = "dang-nhap.html"
+        }
+
+        document.getElementById("dang_xuat").addEventListener("click", function (event) {
+                event.preventDefault();
+                localStorage.removeItem('accessToken');
+                location.reload();
+            });
+    </script>
+    <script>
+        const yeuCau = document.querySelector("#yeu_cau");
+        const ketQua = document.querySelector("#ket_qua");
+        const btYeuCau = document.querySelector("#bt_yeu_cau");
+        const btKetQua = document.querySelector("#bt_ket_qua");
+
+        const formYeuCau = document.querySelector("#form_yeu_cau");
+        formYeuCau.addEventListener("submit", event => {
+            event.preventDefault();
+            const token = localStorage.getItem('accessToken');
+            const formData = new FormData(formYeuCau);
+            const data = Object.fromEntries(formData);
+            fetch("http://localhost:8080/api/dong-bhyt-ca-nhan/get", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'Application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(resp => {
+                    if(resp.status=="success"){
+                        let bhytResp = document.querySelector('input[name="bhyt_resp"]');
+                        let hoTenResp = document.querySelector('input[name="hoTen"]');
+                        let tuNgayResp = document.querySelector('input[name="tuNgay"]');
+                        let denNgayResp = document.querySelector('input[name="denNgay"]');
+                        let thanhTienResp = document.querySelector('input[name="thanhTien"]');
+
+                        bhytResp.value = resp.data.bhyt;
+                        hoTenResp.value = resp.data.hoTen;
+                        tuNgayResp.value = resp.data.tuNgay;
+                        denNgayResp.value = resp.data.denNgay;
+                        thanhTienResp.value = resp.data.thanhTien;
+
+                        if(!yeuCau.classList.contains("hide")){
+                            yeuCau.classList.add("hide");
+                            btYeuCau.classList.add("hide");
+                        }
+                        if(ketQua.classList.contains("hide")){
+                            ketQua.classList.remove("hide");
+                            btKetQua.classList.remove("hide");
+                        }
+                    }else{
+                        alert(data.message)
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        });
+
     </script>
 </body>
 

@@ -37,33 +37,29 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli'>
 
-    <!-- =======================================================
-  * Template Name: Medilab
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 
-<body>
+<body class="hide">
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
-
             <h1 class="logo me-auto"><a href="index.html">Nhóm 7</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
                     <li><a class="nav-link scrollto active" href="/index.html">Trang chủ</a></li>
-                    <li id="da_dang_nhap" class="dropdown "><a href="#"><span id="ten_dang_nhap" style="font-weight: bolder;">123456789
+                    <li id="da_dang_nhap" class="dropdown "><a><span id="ten_dang_nhap" style="font-weight: bolder;">123456789
                           - Phạm Minh Hiếu</span> <i class="bi bi-chevron-down"></i></a>
                       <ul>
-                        <li><a href="/thong-tin-tai-khoan.html">Thông tin tài khoản</a></li>
-                        <li><a href="/doi-mat-khau.html">Thay đổi mật khẩu</a></li>
-                        <li><a>Đăng xuất</a></li>
+                        <li><a href="/thong-tin-tai-khoan.html" style="text-decoration: none; font-weight: normal;">Thông tin tài khoản</a></li>
+                        <li><a href="/doi-mat-khau.html" style="text-decoration: none;font-weight: normal;">Thay đổi mật khẩu</a></li>
+                        <li><a style="text-decoration: none;font-weight: normal;" id="dang_xuat">Đăng xuất</a></li>
                       </ul>
                     </li>
                 </ul>
@@ -122,7 +118,7 @@
                                     <label class="label-input">Họ và tên: <i style="color: red;">*</i></label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text" class="input-reg" name="hoTen" required>
+                                    <input type="text" class="input-reg" name="hoTen" required readonly>
                                 </div>
                             </div>
                             <div class="row">
@@ -134,8 +130,8 @@
                                 </div>
                                 <div class="col-4">
                                     <input type="text" style="margin-top: 70px" class="input-reg" name="username"
-                                        required>
-                                    <input type="text" style="margin-top: 30px" class="input-reg" name="cccd" required>
+                                        required readonly>
+                                    <input type="text" style="margin-top: 30px" class="input-reg" name="cccd" required readonly>
                                 </div>
                                 <div class="col-5">
                                     <div style="margin: 30px 0px 20px 20px;">
@@ -254,6 +250,12 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody id="ds-thanh-vien" style="text-align: center;">
+                                                    <!-- <tr>
+                                                        <td>STT</td>
+                                                        <td>Mã số BHXH</td>
+                                                        <td>Họ và tên</td>
+                                                        <td>Mối quan hệ với chủ hộ</td>
+                                                    </tr> -->
                                                 </tbody>
                                             </table>
                                         </div>
@@ -348,6 +350,49 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
     <!-- CALL API -->
+    <script>
+        const token_check = localStorage.getItem('accessToken');
+        const check_body = document.querySelector("body");
+        if (token_check) {
+            fetch('http://localhost:8080/api/check/trang-chu', {
+                method: "GET",
+                headers: {
+                    'Authorization': 'Bearer ' + token_check
+                }
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        console.log("FAIL")
+                    }
+                })
+                .then(data => {
+                    if (data.status == "success") {
+                        if (check_body.classList.contains("hide")) {
+                            check_body.classList.remove("hide");
+                        }
+                        let tenDangNhap = document.querySelector("#ten_dang_nhap");
+                        let p = data.username +" - "+data.hoTen;
+                        tenDangNhap.innerHTML = p;
+                    } else {
+                        location.href = "dang-nhap.html"
+                    }
+                })
+                .catch(error => {
+                    location.href = "dang-nhap.html"
+                });
+        } else {
+            location.href = "dang-nhap.html"
+        }
+
+        document.getElementById("dang_xuat").addEventListener("click", function (event) {
+                event.preventDefault();
+                localStorage.removeItem('accessToken');
+                location.reload();
+            });
+    </script>
+    
     <script>
     var citis = document.getElementById("city");
     var districts = document.getElementById("district");
@@ -579,6 +624,111 @@
     </script>
 
     <script>
+        //Hiển thị thông tin tài khoản
+        const token = localStorage.getItem('accessToken');
+        if (token) {
+            fetch('http://localhost:8080/api/thong-tin-tai-khoan/get', {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'Application/json',
+                    'Authorization': 'Bearer ' + token
+                }
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        alert("Lỗi hệ thống !");
+                    }
+                })
+                .then(resp => {
+                    if (resp.status == "success") {
+                        let hoTenResp= document.querySelector('input[name="hoTen"]');
+                        let bhxhResp= document.querySelector('input[name="username"]');
+                        let cccdResp= document.querySelector('input[name="cccd"]');
+                        let tinhThanhPhoResp= document.querySelector("#city");
+                        let quanHuyenResp= document.querySelector("#district");
+                        let phuongXaResp= document.querySelector("#ward");
+                        let diaChiResp= document.querySelector('input[name="diaChi"]');
+                        let emailResp= document.querySelector('input[name="email"]');
+                        let soDienThoaiResp= document.querySelector('input[name="soDienThoai"]');
+
+                        // vars avatar
+                        let icon_avt = document.querySelector("#icon_avt"),
+                            img_result = document.querySelector(".img-result"),
+                            cropped = document.querySelector(".cropped"),
+                            cancel_img = document.querySelector("#cancel_img")
+                        // vars cccd-truoc
+                        let icon_cccd_truoc = document.querySelector("#icon_cccd_truoc"),
+                            img_result_cccd_truoc = document.querySelector(".cccd-truoc-result"),
+                            cropped_cccd_truoc = document.querySelector(".cccd-truoc-cropped"),
+                            cancel_img_cccd_truoc = document.querySelector("#cancel_cccd_truoc")
+                        // vars cccd-sau
+                        let icon_cccd_sau = document.querySelector("#icon_cccd_sau"),
+                            img_result_cccd_sau = document.querySelector(".cccd-sau-result"),
+                            cropped_cccd_sau = document.querySelector(".cccd-sau-cropped"),
+                            cancel_img_cccd_sau = document.querySelector("#cancel_cccd_sau")
+
+                        hoTenResp.value = resp.data.hoTen;
+                        bhxhResp.value = resp.data.bhxh;
+                        cccdResp.value = resp.data.cccd;
+                        tinhThanhPhoResp.value = resp.data.tinhThanhPho;
+                        quanHuyenResp.value = resp.data.quanHuyen;
+                        phuongXaResp.value = resp.data.phuongXa;
+                        diaChiResp.value = resp.data.diaChi;
+                        emailResp.value = resp.data.email;
+                        soDienThoaiResp.value = resp.data.soDienThoai;
+
+                        if(resp.data.imgChanDung!=null){
+                            icon_avt.classList.add("hide");
+                            img_result.classList.remove("hide");
+                            cropped.classList.remove("hide");
+                            cancel_img.classList.remove("hide");
+                            cropped.src = resp.data.imgChanDung
+                        }
+                        if (resp.data.imgCccdSau != null) {
+                            icon_cccd_sau.classList.add("hide");
+                            img_result_cccd_sau.classList.remove("hide");
+                            cropped_cccd_sau.classList.remove("hide");
+                            cancel_img_cccd_sau.classList.remove("hide");
+                            cropped_cccd_sau.src = resp.data.imgCccdSau;
+                        }
+                        if (resp.data.imgCccdTruoc != null) {
+                            icon_cccd_truoc.classList.add("hide");
+                            img_result_cccd_truoc.classList.remove("hide");
+                            cropped_cccd_truoc.classList.remove("hide");
+                            cancel_img_cccd_truoc.classList.remove("hide");
+                            cropped_cccd_truoc.src = resp.data.imgCccdTruoc;
+                        }
+
+                        let thanh_vien = resp.data.thanhVienHGD;
+                        let ds_thanh_vien = document.querySelector("#ds-thanh-vien");
+                        let t_body="";
+                        for(let i=0;i<thanh_vien.length;i++){
+                            t_body+=`
+                                <tr>
+                                    <td>${thanh_vien[i].stt}</td>
+                                    <td>${thanh_vien[i].bhxh}</td>
+                                    <td>${thanh_vien[i].hoTen}</td>
+                                    <td>${thanh_vien[i].mqh}</td>
+                                </tr>
+                            `
+                        }
+                        ds_thanh_vien.innerHTML = t_body;
+                    } else {
+                        alert("Lỗi hệ thống !");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error: "+ error);
+                });
+        }
+
+
+
+
+
+        //Chỉnh sửa thông tin tài khoản
         var dangKyAPI = "http://localhost:8080/api/auth/signup"
         const sampleForm = document.getElementById("form-id");
         sampleForm.addEventListener("submit", event => {
@@ -600,10 +750,7 @@
                 })
                 .then(data => {
                     if (data.status == "success") {
-                        let ok = confirm(`Mật khẩu của bạn là: ${data.message}, bạn có muốn chuyển sang trang đăng nhập không`);
-                        if (ok) {
-                            location.href = "/index.html"
-                        }
+                        let 
 
                     } else {
                         alert(data.message)

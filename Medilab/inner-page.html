@@ -158,7 +158,12 @@
                   <label class="label-input" style="margin-top: 30px">Số CCCD/CMND: <i style="color: red;">*</i></label>
                 </div>
                 <div class="col-4">
-                  <input type="text" style="margin-top: 70px" class="input-reg"  name="username" required>
+                  <div>
+                    <input type="text" style="margin-top: 70px" class="input-reg"  name="username" required>
+                    <div class="input-group-append justify-content-end">
+                      <i class="bi bi-search" style="font-size:25px; margin-top:-35px" id="tim_kiem"></i>
+                    </div>
+                  </div>
                   <input type="text" style="margin-top: 30px" class="input-reg"  name="cccd" required>
                 </div>
                 <div class="col-5">
@@ -587,6 +592,23 @@
         .catch((error) => {
           console.log('Error:', error);
         });
+    });
+
+    const myIcon = document.getElementById("tim_kiem");
+
+    // Sự kiện hover vào icon
+    myIcon.addEventListener("mouseenter", () => {
+      myIcon.style.color = "blue"; // đổi màu xanh
+    });
+
+    // Sự kiện hover ra khỏi icon
+    myIcon.addEventListener("mouseleave", () => {
+      myIcon.style.color = "black"; // đổi về màu mặc định
+    });
+
+    // Sự kiện click vào icon
+    myIcon.addEventListener("click", () => {
+      location.href = "tim-kiem-bhxh.html"; // chuyển đến trang tim-kiem.html
     });
   </script>
 
