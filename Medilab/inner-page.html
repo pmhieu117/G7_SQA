@@ -241,6 +241,22 @@
                   <input type="text" style="margin-top: 30px;" class="input-reg" name="soDienThoai" required>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-3">
+                  <label class="label-input" style="margin-top: 30px;">Mật khẩu: <i style="color: red;">*</i></label>
+                </div>
+                <div class="col-9">
+                  <input type="password" style="margin-top: 30px;" class="input-reg" name="password" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <label class="label-input" style="margin-top: 30px;">Xác thực mật khẩu: <i style="color: red;">*</i></label>
+                </div>
+                <div class="col-9">
+                  <input type="password" style="margin-top: 30px;" class="input-reg" name="xacThuc" required>
+                </div>
+              </div>
               <div class="row justify-content-end">
                 <div class="col-2">
                   <button class="btn btn-primary btn-block" type="submit" style="margin-top: 75px;">Đăng ký</button>
@@ -580,7 +596,7 @@
         })
         .then(data => {
           if (data.status == "success") {
-            let ok = confirm(`Mật khẩu của bạn là: ${data.message}, bạn có muốn chuyển sang trang đăng nhập không`);
+            let ok = confirm(`${data.message}, bạn có muốn chuyển sang trang đăng nhập không`);
             if(ok){
               location.href = "/index.html"
             }

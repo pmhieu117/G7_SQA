@@ -5,6 +5,7 @@ import java.util.Set;
 public class SignupRequest {
   private String username,hoTen,cccd,tinhThanhPho,quanHuyen,phuongXa,diaChi,
           soDienThoai,email,imgChanDung,cccdTruoc,cccdSau,imgGks,chiTietCoQuanBHXH;
+  private String password, xacThuc;
   //private Set<String> role;
 
   public SignupRequest() {
@@ -139,7 +140,22 @@ public class SignupRequest {
     this.chiTietCoQuanBHXH = chiTietCoQuanBHXH;
   }
 
-//  public Set<String> getRole() {
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public String getXacThuc() {
+    return xacThuc;
+  }
+
+  public void setXacThuc(String xacThuc) {
+    this.xacThuc = xacThuc;
+  }
+  //  public Set<String> getRole() {
 //    return role;
 //  }
 //

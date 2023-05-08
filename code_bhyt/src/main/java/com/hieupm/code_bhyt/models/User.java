@@ -80,8 +80,8 @@ public class User {
   @Column(name = "cccd_sau")
   private String cccdSau;
 
-  @Column(name = "img_gks")
-  private String imgGks;
+  @Column(name = "img_bhyt")
+  private String imgBhyt;
 
   @NotBlank
   @Column(name = "gioi_tinh",length = 20)
@@ -102,8 +102,10 @@ public class User {
 
   @Column(name = "quan_he_chu_ho")
   private String quanHeChuHo;
-  @Column(name = "address_gks")
-  private String addressGks;
+  @Column(name = "dia_chi_cap_bhyt")
+  private String diaChiBhyt;
+  @Column(name = "kcb_bhyt")
+  private String diaChiKcb;
 
   @Column(name = "bhyt", length = 15)
   private String bhyt;
@@ -132,7 +134,7 @@ public class User {
 
   public User(String username, String cccd, String hoTen, String ngaySinh,
               String tinhThanhPho, String quanHuyen, String phuongXa, String diaChi,
-              String gioiTinh, HoGiaDinh hoGiaDinh, String quanHeChuHo, String addressGks) {
+              String gioiTinh, HoGiaDinh hoGiaDinh, String quanHeChuHo, String diaChiBhyt) {
     this.username = username;
     this.cccd = cccd;
     this.hoTen = hoTen;
@@ -144,6 +146,6 @@ public class User {
     this.gioiTinh = gioiTinh;
     this.hoGiaDinh = hoGiaDinh;
     this.quanHeChuHo = quanHeChuHo;
-    this.addressGks = addressGks;
+    this.diaChiBhyt = diaChiBhyt;
   }
 }

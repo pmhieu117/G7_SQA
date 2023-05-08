@@ -123,9 +123,13 @@ public class AuthController {
               .badRequest()
               .body(new Response("fail","Đã tồn tại số điện thoại người dùng !"));
     }
-
+    if(signUpRequest.getPassword().equals(signUpRequest.getXacThuc())==false){
+      return ResponseEntity
+              .badRequest()
+              .body(new Response("fail","Xác thực mật khẩu không trùng khớp !"));
+    }
     // Create new user's account
-    String random = "12345";
+    String random = signUpRequest.getPassword();
     String matKhau = encoder.encode(random);
     user.setTinhThanhPho(signUpRequest.getTinhThanhPho());
     user.setQuanHuyen(signUpRequest.getQuanHuyen());
@@ -144,7 +148,7 @@ public class AuthController {
     }
     user.setPassword(matKhau);
     userRepository.save(user);
-    return ResponseEntity.ok(new Response("success",random));
+    return ResponseEntity.ok(new Response("success","Đăng ký tài khoảng thành công"));
   }
 }
 //user.setChiTietCoQuanBHXH("xxx");

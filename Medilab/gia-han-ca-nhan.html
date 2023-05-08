@@ -251,8 +251,8 @@
             fetch("http://localhost:8080/api/dong-bhyt-ca-nhan/get", {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'Application/json',
-                    'Authorization': 'Bearer ' + token
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(data)
             })
@@ -280,7 +280,7 @@
                             btKetQua.classList.remove("hide");
                         }
                     }else{
-                        alert(data.message)
+                        alert(resp.message)
                     }
                 })
                 .catch((error) => {

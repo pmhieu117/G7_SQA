@@ -36,71 +36,32 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli'>
-
-    <!-- =======================================================
-  * Template Name: Medilab
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
-<body>
-
-    <!-- ======= Top Bar ======= -->
-    <div id="topbar" class="d-flex align-items-center fixed-top">
-        <div class="container d-flex justify-content-between">
-            <div class="contact-info d-flex align-items-center">
-                <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>
-                <i class="bi bi-phone"></i> +1 5589 55488 55
-            </div>
-            <div class="d-none d-lg-flex social-links align-items-center">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-            </div>
-        </div>
+<body class="hide">
     </div>
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
-
             <h1 class="logo me-auto"><a href="index.html">Nhóm 7</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
                     <li><a class="nav-link scrollto active" href="/index.html">Trang chủ</a></li>
-                    <!-- <li><a class="nav-link scrollto" href="#about">Giới thiệu</a></li>
-          <li><a class="nav-link scrollto" href="#services">Dịch vụ</a></li>
-          <li><a class="nav-link scrollto" href="#gallery">Hình ảnh</a></li> -->
-                    <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                      <li><a href="#">Drop Down 1</a></li>
-                      <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                    <li id="da_dang_nhap" class="dropdown "><a><span id="ten_dang_nhap"
+                                style="font-weight: bolder;">123456789
+                                - Phạm Minh Hiếu</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                          <li><a href="#">Deep Drop Down 1</a></li>
-                          <li><a href="#">Deep Drop Down 2</a></li>
-                          <li><a href="#">Deep Drop Down 3</a></li>
-                          <li><a href="#">Deep Drop Down 4</a></li>
-                          <li><a href="#">Deep Drop Down 5</a></li>
+                            <li><a href="/thong-tin-tai-khoan.html"
+                                    style="text-decoration: none; font-weight: normal;">Thông tin tài khoản</a></li>
+                            <li><a href="/doi-mat-khau.html" style="text-decoration: none;font-weight: normal;">Thay đổi mật
+                                    khẩu</a></li>
+                            <li><a style="text-decoration: none;font-weight: normal;" id="dang_xuat">Đăng xuất</a></li>
                         </ul>
-                      </li>
-                      <li><a href="#">Drop Down 2</a></li>
-                      <li><a href="#">Drop Down 3</a></li>
-                      <li><a href="#">Drop Down 4</a></li>
-                    </ul>
-                  </li> -->
-                    <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
+                    </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
-
-            <a href="/dang-nhap.html" class="appointment-btn scrollto">Đăng nhập</a>
         </div>
     </header><!-- End Header -->
 
@@ -111,10 +72,10 @@
             <div class="container">
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Đăng ký tài khoản tài khoản giao dịch điện tử</h2>
+                    <h2>Khai báo thông tin bảo hiểm y tế</h2>
                     <ol>
                         <li><a href="index.html">Trang chủ</a></li>
-                        <li>Đăng ký</li>
+                        <li>Khai báo thông tin</li>
                     </ol>
                 </div>
 
@@ -125,7 +86,7 @@
             <div class="container">
                 <form id="form-id" enctype="multipart/form-data">
                     <div class="row justify-content-start">
-                        <div class="col-2">
+                        <div class="col-2 hide">
                             <div style=" width: 100%; height: auto;">
                                 <label for="avatar-input"> Ảnh chân dung 4x6<i style="color: red;">*</i> :
                                     <div id="image1" style="width: 130px; height: 143px; background-size: cover;">
@@ -141,42 +102,57 @@
                                     style="display: none;" />
                             </div>
                         </div>
-                        <div class="col-10">
+                        <div class="col-12">
                             <h2 class="reg-form-title">
-                                TỜ KHAI
+                                KHAI BÁO THÔNG TIN
                             </h2>
                             <p class="content-form-title" style="margin-bottom: 50px;">
-                                Đăng ký sử dụng, điều chỉnh thông tin và ngừng sử dụng phương thức giao dịch điện tử
-                                trong lĩnh vực bảo hiểm xã hội
+                                Khai báo thông tin bảo hiểm y tế, điều chỉnh đối tượng thanh toán bao hiểm y tế sử dụng phương thức giao dịch điện tử trong lĩnh vực bảo hiểm y tế 
                             <p>
                             <div class="row">
                                 <div class="col-3">
-                                    <label class="label-input">Họ và tên: <i style="color: red;">*</i></label>
+                                    <label class="label-input">Mã thẻ bảo hiểm y tế: <i style="color: red;">*</i></label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text" class="input-reg" name="hoTen" required>
+                                    <input type="text" class="input-reg" name="bhyt" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-3">
-                                    <label class="label-input" style="margin-top: 70px">Mã bảo hiểm xã hội: <i
-                                            style="color: red;">*</i></label>
-                                    <label class="label-input" style="margin-top: 30px">Số CCCD/CMND: <i
-                                            style="color: red;">*</i></label>
+                                    <label class="label-input" style="margin-top: 30px">Địa chỉ cấp thẻ: <i style="color: red;">*</i></label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="input-reg" name="diaChiCapBhyt" style="margin-top: 30px" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label class="label-input" style="margin-top: 30px">Nơi ĐK KCB BĐ: <i style="color: red;">*</i></label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="input-reg" name="kcbBhyt" required style="margin-top: 30px">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label class="label-input" style="margin-top: 70px;padding-right:50px">Họ và tên: <i
+                                            style="color: red;" >*</i></label>
+                                    <label class="label-input" style="margin-top: 70px; padding-right:100px">Ngày sinh: <i style="color: red;">*</i></label>
+                                    <label class="label-input" style="margin-top: 70px">Giới tính: <i style="color: red;">*</i></label>
                                 </div>
                                 <div class="col-4">
-                                    <input type="text" style="margin-top: 70px" class="input-reg" name="username"
-                                        required>
-                                    <input type="text" style="margin-top: 30px" class="input-reg" name="cccd" required>
+                                    <input type="text" style="margin-top: 70px" class="input-reg" name="hoTen" required readonly>
+                                    <input type="text" style="margin-top: 70px" class="input-reg" name="ngaySinh" required readonly>
+                                    <input type="text" style="margin-top: 70px" class="input-reg" name="gioiTinh" required readonly>
                                 </div>
                                 <div class="col-5">
                                     <div style="margin: 30px 0px 20px 20px;">
-                                        <label class="label-input">Ảnh CMND/CCCD<i style="color: red;">*</i> :</label>
+                                        <label class="label-input">Ảnh thẻ BHYT đã được cấp<i style="color: red;">*</i> :</label>
                                         <div class="flex-container">
                                             <div>
                                                 <label class="label-input" for="cccd-truoc"> Mặt trước:
                                                     <div id="image2"
-                                                        style="width: 135px; height: 100px; background-size: cover;">
+                                                        style="width: 400px; height: 250px; background-size: cover;">
                                                         <img id="icon_cccd_truoc" src="/images/icons/cccd_upload.png"
                                                             alt="Ảnh CCCD mặt trước" width="100%" height="100%">
                                                         <div class="box-2 cccd-truoc-result hide">
@@ -189,13 +165,11 @@
                                                 <input type="file" id="cccd-truoc" name="cccdTruoc"
                                                     style="display: none;">
                                             </div>
-
-                                            <div style="margin-left: 40px;">
+                                            <div style="margin-left: 40px;" class="hide">
                                                 <label class="label-input" for="cccd-sau"> Mặt sau:
-                                                    <div id="image3"
-                                                        style="width: 135px; height: 100px; background-size: cover;">
-                                                        <img id="icon_cccd_sau" src="/images/icons/cccd_upload.png"
-                                                            alt="Ảnh CCCD mặt sau" width="100%" height="100%">
+                                                    <div id="image3" style="width: 135px; height: 100px; background-size: cover;">
+                                                        <img id="icon_cccd_sau" src="/images/icons/cccd_upload.png" alt="Ảnh CCCD mặt sau" width="100%"
+                                                            height="100%">
                                                         <div class="box-2 cccd-sau-result hide">
                                                             <img class="cccd-sau-cropped hide" src="" alt="" />
                                                         </div>
@@ -208,61 +182,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row" style="margin-top: 20px ;">
-                                <div class="col-3">
-                                    <label class="label-input">Địa chỉ liên hệ: <i style="color: red;">*</i></label>
-                                </div>
-                                <div class="col-9">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <select class="input-reg" id="city" aria-label=".form-select-sm"
-                                                name="tinhThanhPho">
-                                                <option value="" selected>Tỉnh / Thành</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-4">
-                                            <select class="input-reg" id="district" aria-label=".form-select-sm"
-                                                name="quanHuyen">
-                                                <option value="" selected>Quận / Huyện</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-4">
-                                            <select class="input-reg" id="ward" aria-label=".form-select-sm"
-                                                name="phuongXa">
-                                                <option value="" selected>Phường / Xã</option>
-                                            </select>
-                                        </div>
+                                <div class="row justify-content-end">
+                                    <div class="col-2">
+                                        <button class="btn btn-primary btn-block" type="submit" style="margin-top: 75px;">Khai báo</button>
                                     </div>
-                                    <input type="text" style="margin-top: 30px;" class="input-reg"
-                                        placeholder="Số nhà, ngõ (ngách, hẻm), đường phố, tổ (thôn, xóm, ấp)"
-                                        name="diaChi">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-3">
-                                    <label class="label-input" style="margin-top: 30px;">Email: <i
-                                            style="color: red;">*</i></label>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" class="input-reg" name="email" required
-                                        style="margin-top: 30px;">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-3">
-                                    <label class="label-input" style="margin-top: 30px;">Số điện thoại: <i
-                                            style="color: red;">*</i></label>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" style="margin-top: 30px;" class="input-reg" name="soDienThoai"
-                                        required>
-                                </div>
-                            </div>
-                            <div class="row justify-content-end">
-                                <div class="col-2">
-                                    <button class="btn btn-primary btn-block" type="submit"
-                                        style="margin-top: 75px;">Đăng ký</button>
                                 </div>
                             </div>
                         </div>
@@ -329,12 +252,8 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Vendor JS Files -->
-    <!-- <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script> -->
+   
+
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
@@ -352,41 +271,81 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
+    <script>
+        const token_check = localStorage.getItem('accessToken');
+        const check_body = document.querySelector("body");
+        if (token_check) {
+            fetch('http://localhost:8080/api/check/trang-chu', {
+                method: "GET",
+                headers: {
+                    'Authorization': 'Bearer ' + token_check
+                }
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        console.log("FAIL")
+                    }
+                })
+                .then(data => {
+                    if (data.status == "success") {
+                        if (check_body.classList.contains("hide")) {
+                            check_body.classList.remove("hide");
+                        }
+                        let tenDangNhap = document.querySelector("#ten_dang_nhap");
+                        let p = data.username + " - " + data.hoTen;
+                        tenDangNhap.innerHTML = p;
+                    } else {
+                        location.href = "dang-nhap.html"
+                    }
+                })
+                .catch(error => {
+                    location.href = "dang-nhap.html"
+                });
+        } else {
+            location.href = "dang-nhap.html"
+        }
+
+        document.getElementById("dang_xuat").addEventListener("click", function (event) {
+            event.preventDefault();
+            localStorage.removeItem('accessToken');
+            location.reload();
+        });
+
+        fetch('http://localhost:8080/api/khai-bao-thong-tin/get', {
+                method: "GET",
+                headers: {
+                    'Authorization': 'Bearer ' + token_check
+                }
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        console.log("FAIL")
+                    }
+                })
+                .then(resp => {
+                    if (resp.status == "success") {
+                        let hoTen= document.querySelector('input[name="hoTen"]');
+                        let ngaySinh= document.querySelector('input[name="ngaySinh"]');
+                        let gioiTinh= document.querySelector('input[name="gioiTinh"]');
+
+                        hoTen.value = resp.data.hoTen;
+                        ngaySinh.value=resp.data.ngaySinh;
+                        gioiTinh.value = resp.data.gioiTinh;
+                    } else {
+                        alert(resp.message);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error: "+error);
+                });
+    </script>
+
     <!-- CALL API -->
     <script>
-    var citis = document.getElementById("city");
-    var districts = document.getElementById("district");
-    var wards = document.getElementById("ward");
-    fetch('/json/tinhQuanHuyen.json')
-      .then(resp => resp.json())
-      .then((data) => {
-        console.log(data);
-        for (const x of data) {
-          citis.options[citis.options.length] = new Option(x.Name, x.Name);
-        }
-        citis.onchange = function () {
-          district.length = 1;
-          ward.length = 1;
-          if (this.value != "") {
-            const result = data.filter(n => n.Name === this.value);
-
-            for (const k of result[0].Districts) {
-              district.options[district.options.length] = new Option(k.Name, k.Name);
-            }
-          }
-        };
-        district.onchange = function () {
-          ward.length = 1;
-          const dataCity = data.filter((n) => n.Name === citis.value);
-          if (this.value != "") {
-            const dataWards = dataCity[0].Districts.filter(n => n.Name === this.value)[0].Wards;
-
-            for (const w of dataWards) {
-              wards.options[wards.options.length] = new Option(w.Name, w.Name);
-            }
-          }
-        };
-      });
 
       // vars avatar
         let result = document.querySelector(".result"),
@@ -581,22 +540,30 @@
           upload_cccd_sau.value = null;
           cropped_cccd_sau.src = "";
         });
-    </script>
 
-    <script>
-        var dangKyAPI = "http://localhost:8080/api/auth/signup"
-        const sampleForm = document.getElementById("form-id");
-        sampleForm.addEventListener("submit", event => {
+        // Update bhyt
+        var dangKyAPI = "http://localhost:8080/api/khai-bao-thong-tin/update"
+        const form = document.getElementById("form-id");
+        const token = localStorage.getItem('accessToken');
+        form.addEventListener("submit", event => {
             event.preventDefault();
-            const formData = new FormData(sampleForm);
+            const formData = new FormData(form);
             const data = Object.fromEntries(formData);
             data['imgChanDung'] = icon_avt.classList.contains('hide') ? cropped.src : null;
             data['cccdTruoc'] = icon_cccd_truoc.classList.contains('hide') ? cropped_cccd_truoc.src : null;
             data['cccdSau'] = icon_cccd_sau.classList.contains('hide') ? cropped_cccd_sau.src : null;
+            delete data.hoTen;
+            delete data.ngaySinh;
+            delete data.gioiTinh;
+            delete data.imgChanDung;
+            delete data.cccdSau;
+            data["imgBhyt"] = data["cccdTruoc"]
+            delete data.cccdTruoc;
             fetch(dangKyAPI, {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
-                    'Content-Type': 'Application/json'
+                    'Content-Type': 'Application/json',
+                    'Authorization': 'Bearer ' + token
                 },
                 body: JSON.stringify(data)
             })
@@ -605,11 +572,7 @@
                 })
                 .then(data => {
                     if (data.status == "success") {
-                        let ok = confirm(`Mật khẩu của bạn là: ${data.message}, bạn có muốn chuyển sang trang đăng nhập không`);
-                        if (ok) {
-                            location.href = "/index.html"
-                        }
-
+                        alert(data.message)
                     } else {
                         alert(data.message)
                     }
@@ -618,6 +581,7 @@
                     console.log('Error:', error);
                 });
         });
+        
     </script>
 
 </body>
